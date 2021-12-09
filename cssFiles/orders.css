@@ -1,0 +1,20 @@
+#title {
+  height: auto;
+  width: auto;
+  font-size: 75px;
+  text-align: center;
+  border-color: black;
+  border-style: solid;
+}
+#list {
+  height: auto;
+  width: 1500px;
+  font-size: 45px;
+  border-color: black;
+  border-style: solid;
+  text-align: center;
+  margin: auto;
+}
+.order {
+  
+}

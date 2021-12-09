@@ -1,0 +1,20 @@
+
+h1 {
+  margin:auto;
+
+  width: 50%;
+  text-align: center;
+  font-size: 56px;
+  border:  10px solid;
+  border-radius: 10px;
+
+}
+.hey {
+  column-count: 3
+}
+.option {
+  width: 30%;
+  margin:auto;
+  font-size: 30px;
+  padding-top: 150px;
+}
