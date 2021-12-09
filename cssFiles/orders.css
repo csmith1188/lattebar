@@ -1,0 +1,22 @@
+#title {
+  height: auto;
+  width: auto;
+  font-size: 75px;
+  text-align: center;
+  border-color: black;
+  border-style: solid;
+}
+#list {
+  height: auto;
+  width: auto;
+  font-size: 45px;
+  border-color: black;
+  border-style: solid;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 75px;
+  margin-right: 75px;
+}
+.order {
+
+}
