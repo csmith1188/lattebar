@@ -13,8 +13,22 @@ h1 {
   column-count: 3
 }
 .option {
-  width: 30%;
+  width: 50%;
   margin:auto;
   font-size: 30px;
   padding-top: 150px;
+  text-align: center;
+}
+.img{
+
+}
+.cart{
+  position:fixed;
+  top: 0;
+  right: 25px;
+  background-color: blue;
+
+  width: 75px;
+  height: 75px;
+  margin: auto
 }
