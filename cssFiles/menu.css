@@ -17,6 +17,7 @@ h1 {
   height: 750px;
   border-radius: 15px;
   overflow-y: auto;
+  padding-top: 15px
 }
 .option {
   width: 50%;
