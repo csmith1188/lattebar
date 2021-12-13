@@ -8,13 +8,15 @@ h1 {
   border-radius: 15px;
 
 }
-.hey {
+.menu {
+  margin-top: 50px;
   column-count: 3;
   border:  5px solid;
+  height: 750px;
 }
 .option {
   width: 50%;
-  margin:auto;
+  margin: auto;
   font-size: 30px;
   padding-top: 150px;
   text-align: center;
