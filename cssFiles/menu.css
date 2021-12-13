@@ -15,6 +15,7 @@ h1 {
   column-count: 4;
   border:  5px solid;
   height: 750px;
+  border-radius: 15px;
   overflow-y: auto;
 }
 .option {
