@@ -6,6 +6,7 @@ const fs = require('fs');
 
 const app = express()
 //Made view engine ejs
+
 app.set("view engine", "ejs")
 
 app.use(express.urlencoded({ extended: true}));
@@ -26,6 +27,12 @@ app.post("/menu", (req, res) => {
     var rawcartitem = fs.readFileSync('cart.json')
     var cartitem = JSON.parse(rawcartitem)
     cartitem.push(req.body.Order)
+    counts = {}
+    cartitem.forEach(function (i) { counts[i] = (counts[i] || 0 ) + 1});
+    for (var i = 0; i < cartitem.length; i++){
+      cartitem = [object]
+    }
+    cartitem = [counts]
     console.log(cartitem);
     fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
     res.redirect('menu')
@@ -37,6 +44,8 @@ app.post("/menu", (req, res) => {
 app.get('/cart', (req, res) => {
   var rawcartitem = fs.readFileSync('cart.json')
   var cartitem = JSON.parse(rawcartitem)
+  cartitem.forEach(function (i) { counts[x] = (counts[x] || 0 ) + 1});
+
   res.render('cart', {
     list: cartitem
   })

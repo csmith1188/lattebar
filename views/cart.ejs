@@ -8,9 +8,9 @@
   <body>
     <h1>Cart</h1>
     <div id="orderList">
-      <% for (var i = 0; i < list.length; i++) { %>
+      <% for (product in list) { %>
 
-        <p><%- list[i] %>
+        <p><%- object.values(product) %>
         </p>
       <% } %>
     </div>
