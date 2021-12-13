@@ -3,6 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const url = require('url');
 const fs = require('fs');
+var sqlite3 = require('sqlite3').verbose();
+var mysql = require('mysql');
+var db = new sqlite3.Database('orderlist.db');
 
 const app = express()
 //Made view engine ejs
@@ -37,6 +40,7 @@ var orderlist = [{
     }, {
       name: 'balogna'
     }]
+
 //Made orders endpoint
 app.get('/orders', (req, res) => {
   res.render('orders', {
