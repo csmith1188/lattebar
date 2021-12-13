@@ -19,7 +19,10 @@ app.get('/', (req, res) => {
 app.get('/menu', (req, res) => {
   res.render('menu')
 });
-
+// post menu goes to cart
+app.post("/menu", (req, res) => {
+  res.redirect("cart")
+})
 //Made cart endpoint
 app.get('/cart', (req, res) => {
   res.render('cart')

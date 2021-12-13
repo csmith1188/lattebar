@@ -26,8 +26,10 @@ h1 {
   position:fixed;
   top: 0;
   right: 25px;
-  background-color: blue;
-
+  border: 10px solid;
+  border-radius: 10px;
+  border-color: green;
+  background-color: green;
   width: 75px;
   height: 75px;
   margin: auto
