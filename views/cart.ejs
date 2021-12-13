@@ -8,6 +8,11 @@
   <body>
     <h1>Cart</h1>
     <div id="orderList">
+      <% for (var i = 0; i < list.length; i++) { %>
+
+        <p><%- list[i] %>
+        </p>
+      <% } %>
     </div>
     <button class="button">Place Order</button>
   </body>

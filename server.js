@@ -21,11 +21,25 @@ app.get('/menu', (req, res) => {
 });
 // post menu goes to cart
 app.post("/menu", (req, res) => {
-  res.redirect("cart")
+  console.log(req.body.Order);
+  if (req.body.Order){
+    var rawcartitem = fs.readFileSync('cart.json')
+    var cartitem = JSON.parse(rawcartitem)
+    cartitem.push(req.body.Order)
+    console.log(cartitem);
+    fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
+    res.redirect('menu')
+  }else {
+    res.redirect("cart")
+  }
 })
 //Made cart endpoint
 app.get('/cart', (req, res) => {
-  res.render('cart')
+  var rawcartitem = fs.readFileSync('cart.json')
+  var cartitem = JSON.parse(rawcartitem)
+  res.render('cart', {
+    list: cartitem
+  })
 });
 
 //Made login endpoint
