@@ -5,20 +5,27 @@
   text-align: center;
   border-color: black;
   border-style: solid;
+  background-color: white;
+  border-radius: 25px;
 }
+
 #list {
   height: auto;
-  width: calc(100% - 15%);
+  width: calc(100% - 30%);
   font-size: 45px;
   margin: auto;
 }
+
 .order {
   border-color: black;
   border-style: solid;
   text-align: center;
   margin: auto;
   margin-top: 25px;
+  background-color: white;
+  border-radius: 25px;
 }
+
 .deletebutton {
   max-height: 100px;
   border-color: grey;
@@ -31,6 +38,17 @@
   left: 20px;
 }
 .deletebutton:hover {
-  background-color: #4CAF50; /* Green */
+  background-color: #04AA6D;
   color: white;
+  border-color: black;
+}
+
+.deletebutton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(7px);
+}
+
+body{
+  background-color: #668099;
 }
