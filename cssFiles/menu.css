@@ -17,13 +17,14 @@ h1 {
   height: 750px;
   border-radius: 15px;
   overflow-y: auto;
-  padding-top: 15px
+  padding-top: 15px;
 }
 .option {
   width: 50%;
   margin: auto;
   font-size: 30px;
   text-align: center;
+  line-height: 57px;
 }
 .img{
 
