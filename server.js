@@ -5,6 +5,7 @@ const url = require('url');
 const fs = require('fs');
 
 const app = express()
+
 //Made view engine ejs
 
 app.set("view engine", "ejs")
@@ -21,18 +22,20 @@ app.get('/menu', (req, res) => {
   res.render('menu')
 });
 // post menu goes to cart
+var pickitem = [] // a list of pick items
 app.post("/menu", (req, res) => {
   console.log(req.body.Order);
   if (req.body.Order){
     var rawcartitem = fs.readFileSync('cart.json')
     var cartitem = JSON.parse(rawcartitem)
-    cartitem.push(req.body.Order)
+
+    pickitem.push(req.body.Order)
+    console.log(pickitem);
+    cartitem = []
     counts = {}
-    cartitem.forEach(function (i) { counts[i] = (counts[i] || 0 ) + 1});
-    for (var i = 0; i < cartitem.length; i++){
-      cartitem = [object]
-    }
-    cartitem = [counts]
+    pickitem.forEach(function (i) { counts[i] = (counts[i] || 0 ) + 1});
+
+    cartitem.push(counts)
     console.log(cartitem);
     fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
     res.redirect('menu')
@@ -46,9 +49,11 @@ app.get('/cart', (req, res) => {
   var cartitem = JSON.parse(rawcartitem)
   cartitem.forEach(function (i) { counts[x] = (counts[x] || 0 ) + 1});
 
+  var cartitem = JSON.stringify(cartitem)
+  console.log(cartitem);
   res.render('cart', {
     list: cartitem
-  })
+  });
 });
 
 //Made login endpoint

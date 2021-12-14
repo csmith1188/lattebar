@@ -10,8 +10,8 @@
     <div id="orderList">
       <% for (product in list) { %>
 
-        <p><%- object.values(product) %>
-        </p>
+        <p><%= product %> <%- product %></p>
+
       <% } %>
     </div>
     <button class="button">Place Order</button>
