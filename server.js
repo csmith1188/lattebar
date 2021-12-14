@@ -47,8 +47,6 @@ app.post("/menu", (req, res) => {
 app.get('/cart', (req, res) => {
   var rawcartitem = fs.readFileSync('cart.json')
   var cartitem = JSON.parse(rawcartitem)
-  cartitem.forEach(function (i) { counts[x] = (counts[x] || 0 ) + 1});
-
   var cartitem = JSON.stringify(cartitem)
   console.log(cartitem);
   res.render('cart', {
