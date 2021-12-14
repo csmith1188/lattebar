@@ -33,9 +33,18 @@ app.get('/login', (req, res) => {
   res.render('login')
 });
 var orderlist = [{
-      name: 'urmum'
+      name: 'order1'
     }, {
-      name: 'balogna'
+      name: 'order2'
+    },
+    {
+      name: 'order3'
+    },
+    {
+      name: 'order4'
+    },
+    {
+      name: 'order5'
     }]
 
 //Made orders endpoint
