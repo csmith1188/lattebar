@@ -10,7 +10,7 @@ var db = new sqlite3.Database('orderlist.db');
 const app = express()
 
 //Made view engine ejs
-
+var orderlist = []
 app.set("view engine", "ejs")
 
 app.use(express.urlencoded({ extended: true}));
@@ -53,16 +53,23 @@ app.get('/cart', (req, res) => {
     list: cartitem[0]
   });
 });
+app.post('/cart', (req, res) => {
 
+  pickitem = []
+  console.log(pickitem);
+  for (var order of cartitem[0]) {
+    var orderpush = { order:cartitem[order]}
+    orderlist.push(orderpush)
+  }
+  cartitem = []
+  fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
+  res.redirect('/cart')
+})
 //Made login endpoint
 app.get('/login', (req, res) => {
   res.render('login')
 });
-var orderlist = [{
-      name: 'urmum'
-    }, {
-      name: 'balogna'
-    }]
+
 
 //Made orders endpoint
 app.get('/orders', (req, res) => {
