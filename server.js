@@ -30,13 +30,11 @@ app.post("/menu", (req, res) => {
     var cartitem = JSON.parse(rawcartitem)
 
     pickitem.push(req.body.Order)
-    console.log(pickitem);
     cartitem = []
     counts = {}
     pickitem.forEach(function (i) { counts[i] = (counts[i] || 0 ) + 1});
 
     cartitem.push(counts)
-    console.log(cartitem);
     fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
     res.redirect('menu')
   }else {
@@ -47,10 +45,9 @@ app.post("/menu", (req, res) => {
 app.get('/cart', (req, res) => {
   var rawcartitem = fs.readFileSync('cart.json')
   var cartitem = JSON.parse(rawcartitem)
-  var cartitem = JSON.stringify(cartitem)
-  console.log(cartitem);
+
   res.render('cart', {
-    list: cartitem
+    list: cartitem[0]
   });
 });
 

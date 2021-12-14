@@ -8,10 +8,12 @@
   <body>
     <h1>Cart</h1>
     <div id="orderList">
-      <% for (product in list) { %>
-
-        <p><%= product %> <%- product %></p>
-
+      <% for (product in list) { 
+            if (list[product] == 1) {%>
+        <p> <%- product %></p>
+            <% } else { %>
+              <p><%- list[product] %>  <%- product %></p>
+              <% } %>
       <% } %>
     </div>
     <button class="button">Place Order</button>
