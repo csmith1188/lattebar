@@ -11,6 +11,8 @@ const app = express()
 
 //Made view engine ejs
 var orderlist = []
+var counts = {}
+
 app.set("view engine", "ejs")
 
 app.use(express.urlencoded({ extended: true}));
@@ -38,6 +40,7 @@ app.post("/menu", (req, res) => {
     pickitem.forEach(function (i) { counts[i] = (counts[i] || 0 ) + 1});
 
     cartitem.push(counts)
+
     fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
     res.redirect('menu')
   }else {
@@ -54,13 +57,16 @@ app.get('/cart', (req, res) => {
   });
 });
 app.post('/cart', (req, res) => {
+  var rawcartitem = fs.readFileSync('cart.json')
+  var cartitem = JSON.parse(rawcartitem)
+console.log(cartitem);
+if (cartitem[0]) {
+  orderlist.push(counts)
 
-  pickitem = []
-  console.log(pickitem);
-  for (var order of cartitem[0]) {
-    var orderpush = { order:cartitem[order]}
-    orderlist.push(orderpush)
-  }
+}
+console.log(orderlist)
+
+pickitem = []
   cartitem = []
   fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
   res.redirect('/cart')
@@ -81,7 +87,9 @@ app.get('/orders', (req, res) => {
 app.post("/orders", function(req, res){
   console.log(req.body.delete);
   for (var i = 0; i < orderlist.length; i++) {
-    if (req.body.delete == orderlist[i].name) {
+
+
+    if (req.body.delete == i) {
       orderlist.splice(i,1)
     }
   }
