@@ -3,6 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const url = require('url');
 const fs = require('fs');
+var sqlite3 = require('sqlite3').verbose();
+var mysql = require('mysql');
+var db = new sqlite3.Database('orderlist.db');
 
 const app = express()
 //Made view engine ejs
@@ -19,7 +22,10 @@ app.get('/', (req, res) => {
 app.get('/menu', (req, res) => {
   res.render('menu')
 });
-
+// post menu goes to cart
+app.post("/menu", (req, res) => {
+  res.redirect("cart")
+})
 //Made cart endpoint
 app.get('/cart', (req, res) => {
   res.render('cart')
@@ -30,10 +36,20 @@ app.get('/login', (req, res) => {
   res.render('login')
 });
 var orderlist = [{
-      name: 'urmum'
+      name: 'order1'
     }, {
-      name: 'balogna'
+      name: 'order2'
+    },
+    {
+      name: 'order3'
+    },
+    {
+      name: 'order4'
+    },
+    {
+      name: 'order5'
     }]
+
 //Made orders endpoint
 app.get('/orders', (req, res) => {
   res.render('orders', {

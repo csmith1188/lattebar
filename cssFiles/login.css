@@ -8,8 +8,15 @@
   text-align: center;
 }
 /* Bordered form */
+body {
+  background-image: url("beans.jpg");
+}
 form {
   border: 3px solid #f1f1f1;
+  margin-top: 150px;
+  margin-left: 200px;
+  margin-right: 200px;
+  background-color: white;
 }
 
 /* Full-width inputs */
@@ -53,8 +60,8 @@ button:hover {
 
 /* Avatar image */
 img.avatar {
-  width: 40%;
-  border-radius: 50%;
+  width: 10%;
+  border-radius: 25%;
 }
 
 /* Add padding to containers */
