@@ -8,7 +8,18 @@
   <body>
     <h1>Cart</h1>
     <div id="orderList">
+      <% for (product in list) {
+
+            if (list[product] == 1) {%>
+        <p> <%- product %></p>
+            <% } else { %>
+              <p><%- list[product] %>  <%- product %></p>
+              <% } %>
+      <% } %>
     </div>
-    <button class="button">Place Order</button>
+    <form class="" action="/cart" method="post">
+
+      <button type="submit" name="purchase" value="order" class="button">Place Order</button>
+    </form>
   </body>
 </html>
