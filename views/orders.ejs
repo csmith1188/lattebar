@@ -10,13 +10,19 @@
 <body>
   <div id="title">Orders</div>
   <div id="list">
-
-    <% for (var i = 0; i < orders.length; i++) { %>
+    <% for (var o = 0; o < orders.length;o++){%>
     <div class="order">
-      <%- orders[i].name %>
+    <%   for (order in orders[o]) { %>
+      <% if (orders[o][order] == 1) {%>
+      <%- order %>
+      <% } else { %>
+        <%- orders[o][order] %>-<%- order %>
+        <% } %>
+        ,
+        <% } %>
       <form action="/orders" method="post">
 
-      <button value="<%- orders[i].name %>" type="submit" name="delete" class="deletebutton">Delete</button></form>
+      <button value="<%- o %>" type="submit" name="delete" class="deletebutton">Delete</button></form>
     </div>
     <% } %>
 

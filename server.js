@@ -3,9 +3,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const url = require('url');
 const fs = require('fs');
+var sqlite3 = require('sqlite3').verbose();
+var mysql = require('mysql');
+var db = new sqlite3.Database('orderlist.db');
 
 const app = express()
+
 //Made view engine ejs
+var orderlist = []
+var counts = {}
+
 app.set("view engine", "ejs")
 
 app.use(express.urlencoded({ extended: true}));
@@ -19,21 +26,57 @@ app.get('/', (req, res) => {
 app.get('/menu', (req, res) => {
   res.render('menu')
 });
+// post menu goes to cart
+var pickitem = [] // a list of pick items
+app.post("/menu", (req, res) => {
+  console.log(req.body.Order);
+  if (req.body.Order){
+    var rawcartitem = fs.readFileSync('cart.json')
+    var cartitem = JSON.parse(rawcartitem)
 
+    pickitem.push(req.body.Order)
+    cartitem = []
+    counts = {}
+    pickitem.forEach(function (i) { counts[i] = (counts[i] || 0 ) + 1});
+
+    cartitem.push(counts)
+
+    fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
+    res.redirect('menu')
+  }else {
+    res.redirect("cart")
+  }
+})
 //Made cart endpoint
 app.get('/cart', (req, res) => {
-  res.render('cart')
-});
+  var rawcartitem = fs.readFileSync('cart.json')
+  var cartitem = JSON.parse(rawcartitem)
 
+  res.render('cart', {
+    list: cartitem[0]
+  });
+});
+app.post('/cart', (req, res) => {
+  var rawcartitem = fs.readFileSync('cart.json')
+  var cartitem = JSON.parse(rawcartitem)
+console.log(cartitem);
+if (cartitem[0]) {
+  orderlist.push(counts)
+
+}
+console.log(orderlist)
+
+pickitem = []
+  cartitem = []
+  fs.writeFile("cart.json", JSON.stringify(cartitem), 'utf8', function(){})
+  res.redirect('/cart')
+})
 //Made login endpoint
 app.get('/login', (req, res) => {
   res.render('login')
 });
-var orderlist = [{
-      name: 'urmum'
-    }, {
-      name: 'balogna'
-    }]
+
+
 //Made orders endpoint
 app.get('/orders', (req, res) => {
   res.render('orders', {
@@ -44,7 +87,9 @@ app.get('/orders', (req, res) => {
 app.post("/orders", function(req, res){
   console.log(req.body.delete);
   for (var i = 0; i < orderlist.length; i++) {
-    if (req.body.delete == orderlist[i].name) {
+
+
+    if (req.body.delete == i) {
       orderlist.splice(i,1)
     }
   }
