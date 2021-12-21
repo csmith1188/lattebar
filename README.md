@@ -33,6 +33,20 @@ Install all needed modules:
 
 `npm install`
 
-Run the server:
+---
+
+## Running Program
+
+To run this program type this in the lattebar folder:
 
 `node server.js`
+
+### Using run.bat
+
+You could run the server using the run.bat
+
+Make sure you have the needed modules installed (See Installation).
+
+Then click the run.bat and the command prompt should stay open.
+ If it doesn't there is an error.
+ If it does then the server is running.
