@@ -26,10 +26,13 @@ Then clone the repo to your computer.
 Open a Command Prompt Window
 
 Use cd to go into where you installed the repo:
+
 `cd *driveLetter*\...\lattebar`
 
 Install all needed modules:
+
 `npm install`
 
 Run the server:
+
 `node server.js`
