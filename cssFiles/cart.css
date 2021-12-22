@@ -9,10 +9,12 @@ h1{
 #orderList{
   border: 5px solid black;
   height: 600px;
-  width: 1894px;
+  width: 1880px;
   border-radius: 15px;
   overflow: auto;
   background-color: white;
+  font-size: 70px;
+  padding-left: 15px
 }
 
 .button{
@@ -42,4 +44,12 @@ h1{
 }
 body{
   background-color: #668099;
+}
+#totalPrice{
+  border: 5px solid black;
+  height: 50px;
+  width: 1894px;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 50px
 }
